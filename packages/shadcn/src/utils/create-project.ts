@@ -4,6 +4,7 @@ import { getPackageManager } from "@/src/utils/get-package-manager"
 import { highlighter } from "@/src/utils/highlighter"
 import { logger } from "@/src/utils/logger"
 import { spinner } from "@/src/utils/spinner"
+import { DEFAULT_APP_NAME, NEXT_VERSION } from "@kvikpage/cli"
 import { execa } from "execa"
 import fs from "fs-extra"
 import prompts from "prompts"
@@ -43,7 +44,7 @@ export async function createProject(
     type: "text",
     name: "name",
     message: `What is your project named?`,
-    initial: "my-app",
+    initial: DEFAULT_APP_NAME,
     format: (value: string) => value.trim(),
     validate: (value: string) =>
       value.length > 128 ? `Name should be less than 128 characters.` : true,
@@ -92,9 +93,10 @@ export async function createProject(
   ]
 
   try {
+    // ,
     await execa(
       "npx",
-      ["create-next-app@latest", projectPath, "--silent", ...args],
+      ["create-next-app@" + NEXT_VERSION, projectPath, "--silent", ...args],
       {
         cwd: options.cwd,
       }

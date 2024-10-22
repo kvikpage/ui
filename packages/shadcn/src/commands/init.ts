@@ -21,6 +21,7 @@ import { logger } from "@/src/utils/logger"
 import { getRegistryBaseColors, getRegistryStyles } from "@/src/utils/registry"
 import { spinner } from "@/src/utils/spinner"
 import { updateTailwindContent } from "@/src/utils/updaters/update-tailwind-content"
+import { initOverrideOptions } from "@kvikpage/cli"
 import { Command } from "commander"
 import prompts from "prompts"
 import { z } from "zod"
@@ -64,6 +65,7 @@ export const init = new Command()
         isNewProject: false,
         components,
         ...opts,
+        ...initOverrideOptions,
       })
 
       await runInit(options)

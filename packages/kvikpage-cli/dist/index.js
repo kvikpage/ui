@@ -1,0 +1,2 @@
+import{z as o}from"zod";var e=o.object({cwd:o.string(),components:o.array(o.string()).optional(),yes:o.boolean(),defaults:o.boolean(),force:o.boolean(),silent:o.boolean(),isNewProject:o.boolean(),srcDir:o.boolean().optional()}),n="^14",a="kvikpage",i=process.env.VERCEL?"https://ui.kvikpage.com/r":"http://localhost:4444/r",r={defaults:!0,yes:!0},s=[{name:"neutral",label:"Neutral"}];export{a as DEFAULT_APP_NAME,i as KVIKPAGE_REGISTRY_URL,n as NEXT_VERSION,s as REGISTRY_BASE_COLORS,e as initOptionsSchema,r as initOverrideOptions};
+//# sourceMappingURL=index.js.map

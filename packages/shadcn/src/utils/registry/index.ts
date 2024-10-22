@@ -12,12 +12,14 @@ import {
   stylesSchema,
 } from "@/src/utils/registry/schema"
 import { buildTailwindThemeColorsFromCssVars } from "@/src/utils/updaters/update-tailwind-config"
+import { KVIKPAGE_REGISTRY_URL, REGISTRY_BASE_COLORS } from "@kvikpage/cli"
 import deepmerge from "deepmerge"
 import { HttpsProxyAgent } from "https-proxy-agent"
 import fetch from "node-fetch"
 import { z } from "zod"
 
-const REGISTRY_URL = process.env.REGISTRY_URL ?? "https://ui.shadcn.com/r"
+const REGISTRY_URL =
+  process.env.REGISTRY_URL ?? KVIKPAGE_REGISTRY_URL ?? "https://ui.shadcn.com/r"
 
 const agent = process.env.https_proxy
   ? new HttpsProxyAgent(process.env.https_proxy)
@@ -61,28 +63,7 @@ export async function getRegistryItem(name: string, style: string) {
 }
 
 export async function getRegistryBaseColors() {
-  return [
-    {
-      name: "neutral",
-      label: "Neutral",
-    },
-    {
-      name: "gray",
-      label: "Gray",
-    },
-    {
-      name: "zinc",
-      label: "Zinc",
-    },
-    {
-      name: "stone",
-      label: "Stone",
-    },
-    {
-      name: "slate",
-      label: "Slate",
-    },
-  ]
+  return REGISTRY_BASE_COLORS
 }
 
 export async function getRegistryBaseColor(baseColor: string) {
